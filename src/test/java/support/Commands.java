@@ -22,7 +22,7 @@ public class Commands extends RunCucumber {
         System.out.println("##############################################");
         try {
             System.out.println("Vai clicar no elemento: " + element);
-            waitElementBeVisible(element, 2000);
+            waitElementBeVisible(element, 5);
             getDriver().findElement(element).click();
             System.out.println("Clicou no elemento: " + element);
         } catch (Exception error) {
@@ -36,7 +36,7 @@ public class Commands extends RunCucumber {
         System.out.println("##############################################");
         try {
             System.out.println("Vai preencher o campo: " + element);
-            waitElementBeClickable(element, 2000);
+            waitElementBeClickable(element, 5);
             getDriver().findElement(element).sendKeys(value);
             System.out.println("Preencheu o campo: " + element);
         } catch (Exception error) {
@@ -50,9 +50,9 @@ public class Commands extends RunCucumber {
         System.out.println("##############################################");
         String actualMessage = "";
         System.out.println("Vai validar a mensagem: " + expectedMessage);
-        waitElementBeVisible(element, 2000);
+        waitElementBeVisible(element, 5);
         actualMessage = getDriver().findElement(element).getText();
-        Assert.assertEquals("Erro ao validar mensagens!" + expectedMessage, actualMessage);
+        Assert.assertEquals(expectedMessage, actualMessage);
 
         System.out.println("Mensagem validada: " + expectedMessage);
         System.out.println("##############################################");

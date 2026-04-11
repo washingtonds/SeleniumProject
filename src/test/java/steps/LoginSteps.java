@@ -1,10 +1,13 @@
 package steps;
 
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Então;
 import cucumber.api.java.pt.Quando;
 import pages.LoginPage;
 import runner.RunCucumber;
+import support.ScreenshotUtils;
 
 public class LoginSteps extends RunCucumber {
 
@@ -33,7 +36,7 @@ public class LoginSteps extends RunCucumber {
     }
 
     @Então("^vejo mensagem \"([^\"]*)\" de campo não preenchido$")
-    public void vejo_mensagem_de_campo_não_preenchido(String message)  {
+    public void vejo_mensagem_de_campo_não_preenchido(String message) {
         loginPage.verificaCampoVazio(message);
     }
 
@@ -43,7 +46,7 @@ public class LoginSteps extends RunCucumber {
     }
 
     @Dado("^que estou logado na aplicação com user \"([^\"]*)\" e senha \"([^\"]*)\"$")
-    public void que_estou_logado_na_aplicação_com_user_e_senha(String email, String senha)  {
+    public void que_estou_logado_na_aplicação_com_user_e_senha(String email, String senha) {
         loginPage.acessarAplicao();
         loginPage.acessarTelaLogin();
         loginPage.preencheEmail(email);
@@ -52,4 +55,16 @@ public class LoginSteps extends RunCucumber {
         loginPage.verificaLoginSucesso();
     }
 
+    @After
+    public static void takeScreenShot(Scenario scenario) {
+        System.out.println("**********************");
+        System.out.println("Teste que falhou " + scenario.getName());
+        System.out.println("Status " + scenario.getStatus());
+        System.out.println("Tag " + scenario.getSourceTagNames());
+        System.out.println("**********************");
+        if (scenario.isFailed()) {
+            ScreenshotUtils.addScreenShotOnScenario(scenario);
+        }
+
+    }
 }
