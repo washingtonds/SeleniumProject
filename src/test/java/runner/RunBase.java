@@ -27,7 +27,8 @@ public class RunBase {
                 break;
             case "chrome-ci":
                 ChromeOptions  chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("--headless=new");
+                chromeOptions.addArguments("--window-size=1920,1080");
                 driver = new ChromeDriver(chromeOptions);
                 break;
             case "firefox":
@@ -40,7 +41,7 @@ public class RunBase {
         }
 
         if(driver != null){
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         }
 
         return driver;
