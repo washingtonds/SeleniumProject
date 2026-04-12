@@ -27,11 +27,7 @@ public class RunBase {
                 break;
             case "chrome-ci":
                 ChromeOptions  chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless=new"); // Ativa o headless corretamente
-                chromeOptions.addArguments("--disable-gpu");
-                chromeOptions.addArguments("--no-sandbox");
-                chromeOptions.addArguments("--disable-dev-shm-usage");
-                chromeOptions.addArguments("--window-size=1920,1080");
+                chromeOptions.addArguments("--headless");
                 driver = new ChromeDriver(chromeOptions);
                 break;
             case "firefox":
