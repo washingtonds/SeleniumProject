@@ -19,8 +19,6 @@ public class LoginPage extends RunCucumber {
     // ações / funções / métodos
     public void acessarAplicao() {
         getDriver(System.getProperty("browser")).get(URL);
-        // Maximizar é fundamental para evitar sobreposição de elementos
-        getDriver().manage().window().maximize();
     }
 
     public void acessarTelaLogin() {

@@ -48,10 +48,13 @@ public class Commands extends RunCucumber {
 
     public static void checkMessage(By element, String expectedMessage) {
         System.out.println("##############################################");
-        String actualMessage = "";
         System.out.println("Vai validar a mensagem: " + expectedMessage);
-        waitElementBeVisible(element, 5);
-        actualMessage = getDriver().findElement(element).getText();
+
+        WebDriverWait wait = new WebDriverWait(getDriver(), 10); // Aumente um pouco o tempo para o CI
+        // Espera o elemento estar visível E conter o texto esperado
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(element, expectedMessage));
+
+        String actualMessage = getDriver().findElement(element).getText();
         Assert.assertEquals(expectedMessage, actualMessage);
 
         System.out.println("Mensagem validada: " + expectedMessage);
