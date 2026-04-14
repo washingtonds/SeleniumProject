@@ -63,7 +63,7 @@ public class LoginSteps extends RunCucumber {
         System.out.println("Tag " + scenario.getSourceTagNames());
         System.out.println("**********************");
         if (scenario.isFailed()) {
-            ScreenshotUtils.addScreenShotOnScenario(scenario);
+            ScreenshotUtils.addScreenshotOnScenario(scenario);
         }
 
     }
