@@ -43,3 +43,21 @@ jobs:
         with:
           name: report-test
           path: "**/formated-report/"
+
+      - name: Notificação Slack sucesso
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: https://www.pngwing.com/pt/free-png-nhbsg
+          SLACK_MESSAGE: "Sucesso na execução :white_check_mark:"
+
+      - name: Notificação Slack falha
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: https://www.pngwing.com/pt/free-png-vohup
+          SLACK_MESSAGE: "Falha na execução :fire:"
