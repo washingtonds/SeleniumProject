@@ -50,7 +50,7 @@ public class Commands extends RunCucumber {
         System.out.println("##############################################");
         System.out.println("Vai validar a mensagem: " + expectedMessage);
 
-        WebDriverWait wait = new WebDriverWait(getDriver(), 10); // Aumente um pouco o tempo para o CI
+        WebDriverWait wait = new WebDriverWait(getDriver(), 5); // Aumente um pouco o tempo para o CI
         // Espera o elemento estar visível E conter o texto esperado
         wait.until(ExpectedConditions.textToBePresentInElementLocated(element, expectedMessage));
 

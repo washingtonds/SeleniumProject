@@ -50,7 +50,8 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: "Sucesso na execução :white_check_mark"
+          SLACK_ICON: https://www.pngwing.com/pt/free-png-nhbsg
+          SLACK_MESSAGE: "Sucesso na execução :white_check_mark:"
 
       - name: Notificação Slack falha
         if: ${{ failure() }}
@@ -58,4 +59,5 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: "Falha na execução :fire"
+          SLACK_ICON: https://www.pngwing.com/pt/free-png-vohup
+          SLACK_MESSAGE: "Falha na execução :fire:"
